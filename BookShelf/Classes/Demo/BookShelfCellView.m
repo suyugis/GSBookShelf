@@ -36,8 +36,6 @@
 #import "BookShelfCellView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
-
 @implementation BookShelfCellView
 
 @synthesize reuseIdentifier;
@@ -49,7 +47,7 @@ static UIImage *shelfImageLandscape = nil;
 
 + (UIImage *)shadingImage {
     if (shadingImage == nil) {
-        CGFloat scale = isRetina ? 2.0f : 1.0f;
+        CGFloat scale = [UIScreen mainScreen].scale;
         
         UIGraphicsBeginImageContext(CGSizeMake(320 * scale, 139 * scale));
         UIImage *shadingImageToDraw = [UIImage imageNamed:@"Side Shading-iPhone.png"];
@@ -68,7 +66,7 @@ static UIImage *shelfImageLandscape = nil;
 
 + (UIImage *)woodImage {
     if (woodImage == nil) {
-        CGFloat scale = isRetina ? 2.0f : 1.0f;
+        CGFloat scale = [UIScreen mainScreen].scale;
         
         UIGraphicsBeginImageContext(CGSizeMake(480 * scale, 139 * scale));
         UIImage *woodImageToDraw = [UIImage imageNamed:@"WoodTile.png"];
